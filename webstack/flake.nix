@@ -36,11 +36,23 @@
             PS1="\[\033[1;34m\](nix-flake: webstack) \[\033[0m\]$PS1"
 
             # Export necessary environment variables
-            export PRISMA_MIGRATION_ENGINE_BINARY="${pkgs.prisma-engines}/bin/migration-engine"
+            export PRISMA_SCHEMA_ENGINE_BINARY="${pkgs.prisma-engines}/bin/schema-engine"
+            ls $PRISMA_SCHEMA_ENGINE_BINARY
+
+            # export PRISMA_MIGRATION_ENGINE_BINARY="${pkgs.prisma-engines}/bin/migration-engine"
+            ls $PRISMA_MIGRATION_ENGINE_BINARY
+
             export PRISMA_QUERY_ENGINE_BINARY="${pkgs.prisma-engines}/bin/query-engine"
+            ls $PRISMA_QUERY_ENGINE_BINARY
+
             export PRISMA_QUERY_ENGINE_LIBRARY="${pkgs.prisma-engines}/lib/libquery_engine.node"
-            export PRISMA_INTROSPECTION_ENGINE_BINARY="${pkgs.prisma-engines}/bin/introspection-engine"
+            ls $PRISMA_QUERY_ENGINE_LIBRARY
+
+            # export PRISMA_INTROSPECTION_ENGINE_BINARY="${pkgs.prisma-engines}/bin/introspection-engine"
+            # ls $PRISMA_INTROSPECTION_ENGINE_BINARY
+
             export PRISMA_FMT_BINARY="${pkgs.prisma-engines}/bin/prisma-fmt"
+            ls $PRISMA_FMT_BINARY
           '';
         };
       in
