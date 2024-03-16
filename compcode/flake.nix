@@ -3,9 +3,10 @@
     nixpkgs.url = "nixpkgs";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    chrome.url = "github:r-k-b/browser-previews";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, chrome }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         # Use stable channel packages
@@ -17,6 +18,7 @@
         # numbaOverride = pkgs.python3Packages.numba.override { cudaSupport = true; };
 
         packages = with pkgs; [
+          chrome.packages.x86_64-linux.google-chrome-dev
           pypy3
         ];
 
