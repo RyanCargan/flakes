@@ -20,7 +20,9 @@
         packages = with pkgs; [
           chrome.packages.x86_64-linux.google-chrome-dev
           pypy3
+          libpcap
         ];
+        inputsFrom = with pkgs; [ libpcap ];
 
         devEnv = pkgs.mkShell {
           buildInputs = packages; # Include the packages directly
