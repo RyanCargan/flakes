@@ -1,33 +1,21 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs";
-    # nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    # chrome.url = "github:r-k-b/browser-previews";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        # Use stable channel packages
         pkgs = nixpkgs.legacyPackages.${system};
-        # Use unstable channel packages
-        # pkgs = nixpkgs-unstable.legacyPackages.${system};
-
-        # Overrides
-        # numbaOverride = pkgs.python3Packages.numba.override { cudaSupport = true; };
 
         libraries = with pkgs; [
           libxml2
+          krb5
         ];
 
 
-        packages = with pkgs; [
-        ] ++ libraries;
-        # inputsFrom = with pkgs; [
-        #   libpcap
-        #   xorg.libXxf86vm.dev
-        # ];
+        packages = with pkgs; [ ] ++ libraries;
 
         devEnv = pkgs.mkShell {
           buildInputs = packages; # Include the packages directly
