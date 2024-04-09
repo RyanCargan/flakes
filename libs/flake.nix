@@ -25,10 +25,10 @@
           shellHook = with pkgs;
             ''
               # Customize the shell prompt with a pretty blue color
-              PS1="\[\033[1;34m\](nix-flake: compcode) \[\033[0m\]$PS1"
+              PS1="\[\033[1;34m\](nix-flake: libs) \[\033[0m\]$PS1"
 
               # Export necessary environment variables
-              export LD_LIBRARY_PATH=${lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
+              export LD_LIBRARY_PATH=${stdenv.cc.cc.lib}:${lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
             '';
         };
       in
