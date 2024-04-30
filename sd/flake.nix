@@ -65,7 +65,7 @@
           shellHook =
             ''
               # Customize the shell prompt with a pretty blue color
-              PS1="\[\033[1;34m\](nix-flake: automation) \[\033[0m\]$PS1"
+              PS1="\[\033[1;34m\](nix-flake: sd) \[\033[0m\]$PS1"
 
               # Export necessary environment variables
               export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
