@@ -27,7 +27,7 @@
         safetensorsOverride = pkgs.python3Packages.safetensors.override { torch = torchOverride; };
         korniaOverride = pkgs.python3Packages.kornia.override { torch = torchOverride; };
 
-        python = pkgs.python3.withPackages (ps: with ps; [
+        python = (pkgs.python3.withPackages (ps: with ps; [
           torchOverride
           torchSdeOverride
           torchVisionOverride
@@ -42,7 +42,7 @@
           tqdm
           psutil
           korniaOverride
-        ]);
+        ])).override (args: { ignoreCollisions = true; });
 
         libraries = with pkgs; [
           cudaPackages.cudatoolkit # pkg/lib combo
