@@ -67,9 +67,9 @@
               # Customize the shell prompt with a pretty blue color
               PS1="\[\033[1;34m\](nix-flake: sd) \[\033[0m\]$PS1"
 
-              # Export necessary environment variables
-              export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
-              export PATH=${pkgs.cudaPackages.cudatoolkit}/bin:${python}/bin:$PATH # Add CUDA toolkit to PATH for nvcc to avoid PTXAS errors
+              # Export necessary environment variables if needed
+              # export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
+              # export PATH=${pkgs.cudaPackages.cudatoolkit}/bin:${python}/bin:$PATH # Add CUDA toolkit to PATH for nvcc to avoid PTXAS errors
             '';
         };
       in
